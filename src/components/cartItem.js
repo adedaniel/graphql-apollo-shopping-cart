@@ -21,7 +21,7 @@ export default function CartItem({
   removeFromCart,
   ...rest
 }) {
-  const { id, image_url, title, price, amount } = item;
+  const { id, image_url, title, price, amount } = item; // De-structure cart-item details
   return (
     <Stack spacing={3} bg="white" w="full" px={4} py={3} {...rest}>
       <Stack isInline justify="space-between" spacing={8}>
@@ -31,7 +31,7 @@ export default function CartItem({
           fontSize="sm"
           boxSize={4}
           minW={4}
-          onClick={() => removeFromCart(item)}
+          onClick={() => removeFromCart(item)} // Remove Item from cart
         />
       </Stack>
       <Flex pr={16} justify="flex-end">
@@ -40,7 +40,7 @@ export default function CartItem({
       <Flex align="center" justify="space-between">
         <Flex w={32} h={10} bg="white" align="center">
           <IconButton
-            onClick={() => decrementItemAmount(item)}
+            onClick={() => decrementItemAmount(item)} // Reduce number of chosen cart product
             variant="outline"
             color="gray.700"
             borderColor="gray.200"
@@ -59,7 +59,7 @@ export default function CartItem({
             <Text fontSize="xl">{amount}</Text>
           </Center>
           <IconButton
-            onClick={() => incrementItemAmount(item)}
+            onClick={() => incrementItemAmount(item)} // Increase number of chosen cart product
             variant="outline"
             color="gray.700"
             borderColor="gray.200"
@@ -68,7 +68,7 @@ export default function CartItem({
             icon={<AddIcon />}
           />
         </Flex>
-        {!loading && (
+        {!loading && ( // Show only when product price is updated with new currency
           <Text>
             {selectedCurrency} {separateWithComma(price.toFixed(2))}
           </Text>

@@ -1,6 +1,8 @@
 import { extendTheme } from "@chakra-ui/react";
 import { createBreakpoints } from "@chakra-ui/theme-tools";
 
+// Chakra-UI theme configs
+
 const fonts = {
   body: "DM Sans, serif",
   heading: "Playfair Display, serif",
