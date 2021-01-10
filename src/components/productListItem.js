@@ -1,7 +1,7 @@
 import { Button, Center, Flex, Image, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import { separateWithComma } from "../utils";
-
+// Display each Product item
 export default function ProductListItem({
   product,
   loading,
@@ -11,6 +11,13 @@ export default function ProductListItem({
   ...rest
 }) {
   const { id, image_url, title, price } = product;
+
+  const submitProductToCart = () => {
+    // When clicked, add product to cart and open cart drawer
+    addToCart(product);
+    onOpen();
+  };
+
   return (
     <Stack key={id} spacing={6} {...rest}>
       <Center height={48} w="full">
@@ -20,7 +27,7 @@ export default function ProductListItem({
         <Text color="gray.600" textAlign="center" fontSize="sm">
           {title}
         </Text>
-        {!loading && (
+        {!loading && ( // Show only when product price is updated with new currency
           <Text color="black" fontWeight="bold">
             From {selectedCurrency} {separateWithComma(price.toFixed(2))}
           </Text>
@@ -35,10 +42,7 @@ export default function ProductListItem({
           fontWeight="normal"
           w={[32, 40]}
           rounded={0}
-          onClick={() => {
-            addToCart(product);
-            onOpen();
-          }}
+          onClick={submitProductToCart}
         >
           Add to Cart
         </Button>

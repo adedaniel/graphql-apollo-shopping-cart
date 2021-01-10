@@ -58,6 +58,7 @@ export default function Cart({
               <Flex>
                 <Select
                   value={selectedCurrency}
+                  // Set selected currency from list of currencies
                   onChange={(event) => setSelectedCurrency(event.target.value)}
                   w="fit-content"
                   rounded={0}
@@ -66,6 +67,7 @@ export default function Cart({
                   variant="filled"
                 >
                   {currencies?.map((currency, index) => (
+                    // Map Currencies to display in select options
                     <option key={index} value={currency}>
                       {currency}
                     </option>
@@ -73,6 +75,7 @@ export default function Cart({
                 </Select>
               </Flex>
               {cart.map((item) => (
+                // Map each item in the cart into the CartItem component
                 <CartItem
                   key={item.id}
                   item={item}
@@ -95,7 +98,7 @@ export default function Cart({
                 py={3}
               >
                 <Text>Subtotal</Text>
-                {!loading && (
+                {!loading && ( // Show the subtotal when updated with selected currency
                   <Text fontWeight="bold">
                     {selectedCurrency}{" "}
                     {separateWithComma(getSubTotal().toFixed(2))}
