@@ -1,26 +1,19 @@
 import {
-  ChakraProvider,
-  ColorModeProvider,
-  useColorMode,
-  Switch,
-} from "@chakra-ui/react";
-import {
-  ApolloProvider,
   ApolloClient,
-  InMemoryCache,
-  HttpLink,
+  ApolloProvider,
   from,
+  HttpLink,
+  InMemoryCache,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
+import { ChakraProvider } from "@chakra-ui/react";
 import Head from "next/head";
 import theme from "../theme";
 
 function MyApp({ Component, pageProps }) {
-  const { colorMode, toggleColorMode } = useColorMode("light");
-
-  const errorLink = onError(({ graphQLErrors, networkError }) => {
+  const errorLink = onError(({ graphQLErrors }) => {
     if (graphQLErrors) {
-      graphQLErrors.map(({ message, locations, path }) => {
+      graphQLErrors.map(({ message }) => {
         alert(`GraphQL error: ${message}`);
       });
     }
