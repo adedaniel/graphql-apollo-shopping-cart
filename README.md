@@ -1,4 +1,4 @@
-# Take-home exercise solution for Pangaea
+# GraphQL Apollo Shopping Cart
 
 ## by Adetola Daniel
 
